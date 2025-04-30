@@ -37,18 +37,22 @@ public class PatientService {
     }
 
     public Patient getById(String id) {
+        if (id == null) return null;
         return patientRepository.findById(id).orElse(null);
     }
 
     public Patient create(Patient patient) {
+        if (patient == null) throw new NullPointerException("Patient cannot be null");
         return patientRepository.save(patient);
     }
 
     public Patient update(Patient patient) {
+        if (patient == null) throw new NullPointerException("Patient cannot be null");
         return patientRepository.save(patient);
     }
 
     public void deleteById(String id) {
+        if (id == null) return;
         patientRepository.deleteById(id);
     }
 }
